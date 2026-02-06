@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test Gemini</title></head>
+<body>
+  <input type="file" id="testFile" accept="image/*">
+  <button id="testBtn">Test</button>
+  <pre id="log"></pre>
+
+  <script type="module">
+    import { extractProductFromImageGemini } from "./utils/geminiClientBrowser.js";
+
+    async function test() {
+      const file = document.getElementById('testFile').files[0];
+      if (!file) return alert('Pick an image');
+      
+      try {
+        const res = await extractProductFromImageGemini(file, 'AIzaSyBCNVaFnZhdRLSGTTa4m5BJMBM29vcwytU');
+        document.getElementById('log').textContent = JSON.stringify(res, null, 2);
+      } catch (e) {
+        document.getElementById('log').textContent = 'ERROR: ' + e.message;
+      }
+
+      
+    }
+    document.getElementById('testBtn').addEventListener('click', test);
+  </script>
+</body>
+</html>

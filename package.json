@@ -1,0 +1,37 @@
+{
+  "name": "qwen-chat",
+  "version": "1.0.0",
+  "description": "Interactive Qwen3-Max chat console",
+  "main": "app.js",
+  "bin": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "build": "pkg . --targets node18-win-x64",
+    "tauri": "tauri"
+  },
+  "keywords": [
+    "qwen",
+    "ai",
+    "chatbot"
+  ],
+  "author": "Gallant",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@google/genai": "^1.38.0",
+    "@tauri-apps/plugin-dialog": "^2.6.0",
+    "@tauri-apps/plugin-fs": "^2.4.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "multer": "^2.0.2",
+    "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.9.6",
+    "nodemon": "^3.1.11"
+  }
+}

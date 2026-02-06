@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Product Scanner</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>AI Product Scanner</h1>
+  <p>Drag product images below or click to browse.</p>
+
+  <!-- API Key Setup -->
+  <div class="config-section">
+    <h3>🔑 API Keys</h3>
+    <p>Enter your Gemini API Key:</p>
+
+    <div class="api-key-row">
+      <input type="password" id="geminiKey" placeholder="XXxxxx...">
+      <button id="saveKeyBtn">Save</button>
+      <button id="clearKeyBtn">Clear Key</button>
+    </div>
+  </div>
+
+  <div class="dropzone" id="dropZone">
+    <p>Drop images here</p>
+    <label for="fileInput" class="browse-btn">Browse Files</label>
+  </div>
+
+  <!-- Hidden file input -->
+  <input type="file" id="fileInput" multiple accept="image/*" style="display:none">
+
+  <div id="progress"></div>
+  <div id="preview"></div>
+
+  <button id="saveBtn" disabled>💾 Save CSV</button>
+  <button id="clearBtn">🗑️ Clear All</button>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
