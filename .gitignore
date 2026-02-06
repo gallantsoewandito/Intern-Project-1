@@ -1,18 +1,20 @@
-# Dependencies
+# Node.js
 node_modules/
-
-# Environment variables
+npm-debug.log
 .env
 
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Rust / Tauri
+src-tauri/target/
+src-tauri/Cargo.lock
+*.pdb
+*.lib
+*.rlib
+*.rmeta
 
-# IDE
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json".env" 
+# Archives
+*.zip
+*.tar.gz
 
-AI Product Scanner (zip)/
+# OS
+.DS_Store
+Thumbs.db
