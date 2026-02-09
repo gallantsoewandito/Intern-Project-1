@@ -68,7 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
   async function handleFiles(files) {
     if (processing) return;
 
-    const GEMINI_API_KEY = localStorage.getItem('GEMINI_API_KEY').trim().replace(/['"]+/g, '');;
+    const rawKey = localStorage.getItem('GEMINI_API_KEY');
+    const GEMINI_API_KEY = rawKey ? rawKey.trim().replace(/['"]+/g, '') : '';
     if (!GEMINI_API_KEY || GEMINI_API_KEY === '••••••••' || GEMINI_API_KEY.trim() === "") {
       return alert("Set Gemini API Key!");
     }
