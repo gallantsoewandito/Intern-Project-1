@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const key = geminiKeyInput.value.trim().replace(/['"]+/g, '');;
       if (key && key !== '••••••••') {
         localStorage.setItem('GEMINI_API_KEY', key);
-        geminiKeyInput.value = '••••••••';
+        geminiKeyInput.value = '';
         alert('✅ Gemini API key saved!');
       } else {
         alert('⚠️ Please enter a valid API key.');
