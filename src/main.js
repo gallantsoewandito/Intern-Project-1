@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const savedKey = localStorage.getItem('GEMINI_API_KEY');
   if (savedKey && geminiKeyInput) {
-      geminiKeyInput.value = '••••••••';
+      geminiKeyInput.value = '';
   }
 
   saveKeyBtn.addEventListener('click', () => {
@@ -145,8 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ].join('\n');
   }
 
-  function updateProgress(text) {
-    progressEl.textContent = text;
+  function updateProgress(percent) {
+    document.querySelector('.bar').style.width = `${percent}%`;
   }
 
   init();

@@ -113,12 +113,16 @@ p {
 }
 
 /* === Progress & Preview === */
-#progress {
-  margin: 1.25rem 0;
-  font-weight: bold;
-  color: #007AFF;
-  text-align: center;
-  min-height: 1.5rem;
+#progress-bar {
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+}
+.bar {
+  height: 100%;
+  width: 0%;
+  background: #007AEE;
+  transition: width 0.3s;
 }
 
 #preview {

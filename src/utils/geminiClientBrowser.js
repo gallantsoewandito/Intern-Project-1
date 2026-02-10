@@ -48,6 +48,7 @@ export async function extractProductFromImageGemini(file, geminiKey) {
     Rules:
     - Return ONLY the JSON object.
     - "price" must be a NUMBER (no "Rp" or dots).
+    - "unit" should only contain one unit type, don't mix with other units.
     - If a field is missing, use "N/A".
     - Do not include markdown formatting or backticks.
     `;
