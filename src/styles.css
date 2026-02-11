@@ -91,21 +91,52 @@ p {
   transform: scale(1.02);
 }
 
-.browse-btn {
-  display: inline-block;
-  background: #007AFF;
-  color: white;
+.file-input-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center; /* centers horizontally */
+  align-items: center;     /* ensures vertical alignment */
+  margin-top: 16px;
+}
+
+.browse-btn,
+.mic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  margin-top: 10px;
   text-decoration: none;
   transition: background 0.2s;
+  white-space: nowrap;
+  min-height: 44px; /* ensures consistent height across devices */
+}
+
+.browse-btn {
+  background: #007AFF;
+  color: white;
 }
 
 .browse-btn:hover {
   background: #0056cc;
+}
+
+.mic-btn {
+  background: #9cb2ca;
+  color: black;
+}
+
+.mic-btn:hover {
+  background: #8a9fb0;
+}
+
+.mic-btn.recording-active {
+  background: #dc3545; /* Red background */
+  color: white;
+  border: none;
+  animation: pulse-red 1.5s infinite;
 }
 
 #fileInput {
@@ -215,5 +246,20 @@ button.global-action:disabled {
 
   body {
     padding: 0 16px;
+  }
+}
+
+@keyframes pulse-red {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
   }
 }

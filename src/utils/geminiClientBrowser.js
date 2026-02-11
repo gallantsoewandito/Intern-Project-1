@@ -84,3 +84,60 @@ export async function extractProductFromImageGemini(file, geminiKey) {
         };
     }
 }
+
+export async function extractProductFromAudioGemini(file, geminiKey) {
+  if (!geminiKey) throw new Error('Missing GEMINI_API_KEY');
+
+  const GEMINI_API_KEY = geminiKey.trim().replace(/['"]+/g, '');
+  const client = new GoogleGenerativeAI(GEMINI_API_KEY);
+  const model = client.getGenerativeModel(
+    { model: "gemini-2.0-flash"},
+    { apiVersion: "v1"}
+  )
+
+  const prompt = `
+  Listen to this audio carefully. It contains a description of a product.
+    Extract the details into this EXACT JSON format:
+    {
+      "name": "Product name mentioned",
+      "price": 0,
+      "unit": "Volume/weight mentioned (e.g. 500g)",
+      "sku": "SKU or N/A",
+      "category": "One of: Beauty, Food, Stationery, Electronics, Home, Other"
+    }
+
+    Rules:
+    - If the user says "Rupiah", convert it to a plain number for the "price" field.
+    - If a field isn't mentioned, use "N/A".
+    - Return ONLY raw JSON.
+    `;
+
+    try {
+      const audioPart = await fileToGenerativePart(file);
+      const result = await model.generateContent([prompt, audioPart]);
+      const response = await result.response;
+      const text = response.text();
+
+      const jsonMatch = text.match(/\{[\s\S]*\}/);
+      if (!jsonMatch) throw new Error("AI failed to return valid JSON");
+
+      const cleanJson = JSON.parse(jsonMatch[0]);
+
+      return {
+        name: cleanJson.name || 'N/A',
+        price: cleanJson.price || 0,
+        unit: cleanJson.unit || 'N/A',
+        sku: cleanJson.sku || 'N/A',
+        category: cleanJson.category || 'Other'
+      };
+    } catch(error) {
+      console.error('Gemini Audio Error: ', error);
+      return {
+        name: "Audio Scan Error", 
+        price: 0, sku: "N/A", 
+        category: "Other", 
+        unit: "N/A", 
+        isError: true
+      }
+    }
+}

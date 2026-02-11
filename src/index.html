@@ -23,12 +23,15 @@
   </div>
 
   <div class="dropzone" id="dropZone">
-    <p>Drop images here</p>
-    <label for="fileInput" class="browse-btn">Browse Files</label>
+    <p>Drop images here or Speak</p>
+    <div class="file-input-row">
+      <label for="fileInput" class="browse-btn">Browse Files</label>
+      <button id="micBtn" class="mic-btn">Open mic</button>
+    </div>
   </div>
 
   <!-- Hidden file input -->
-  <input type="file" id="fileInput" multiple accept="image/*" style="display:none">
+  <input type="file" id="fileInput" multiple accept="image/*,audio/*" style="display:none">
 
   <div id="progress-bar">
     <div class="bar"></div>
