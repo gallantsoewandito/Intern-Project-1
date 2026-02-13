@@ -101,13 +101,14 @@ export async function extractProductFromAudioGemini(file, geminiKey) {
     {
       "name": "Product name mentioned",
       "price": 0,
-      "unit": "Volume/weight mentioned (e.g. 500g)",
+      "unit": "Volume or weight (e.g., 180ml, 1kg)",
       "sku": "SKU or N/A",
       "category": "One of: Beauty, Food, Stationery, Electronics, Home, Other"
     }
 
     Rules:
     - If the user says "Rupiah", convert it to a plain number for the "price" field.
+    - Use abbreviated term for units
     - If a field isn't mentioned, use "N/A".
     - Return ONLY raw JSON.
     `;
