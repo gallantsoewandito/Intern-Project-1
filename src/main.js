@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     alert('✅ API key cleared.');
   });
 
+  micBtn.textContent = "🎙️ Open Mic";
   micBtn.addEventListener('click', async (e) => {
     e.stopPropagation();
     e.preventDefault();

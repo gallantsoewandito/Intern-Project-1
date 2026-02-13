@@ -124,17 +124,17 @@ p {
 }
 
 .mic-btn {
-  background: #9cb2ca;
+  background: #cadbec;
   color: black;
 }
 
 .mic-btn:hover {
-  background: #8a9fb0;
+  background: #a5b9ca;
 }
 
 .mic-btn.recording-active {
-  background: #dc3545; /* Red background */
-  color: white;
+  background: #e9abb1; 
+  color: rgb(221, 54, 54);
   border: none;
   animation: pulse-red 1.5s infinite;
 }
